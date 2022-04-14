@@ -3,8 +3,105 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: concolas;
 }
 
 :root {
     --white-color:#fff;
+    --background-color:#000;
+    --font-color:#555;
+    --dark-blue:#008aff;
+    --light-blue:#00ffe7
+}
+
+
+body {
+    background: var(--background-color);
+    cursor: context-menu;
+}
+
+section {
+    padding: 40px;
+    color: var(--font-color);
+}
+
+section h2 {
+    font-size: 4em;
+}
+
+section p {
+    font-size: 1.2em;
+}
+
+#cursorMeter {
+    position: fixed;
+    top: 0;
+    width: 400px;
+    height: 80px;
+    /* background: #ff0; */
+    pointer-events: none;
+    z-index: 10;
+}
+
+#scrollPath {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: #333;
+}
+
+#progressBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to left, var(--dark-blue), var(--light-blue) );
+    animation: animate 5s linear infinite;
+
+}
+
+#progressBar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, var(--dark-blue), var(--light-blue) );
+    filter: blur(10px);
+}
+
+#progressBar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, var(--dark-blue), var(--light-blue) );
+    filter: blur(30px);
+}
+
+
+@keyframes animate {
+    0%, 100% {
+        filter:hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+#percent {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    color: var(--white-color);
+    font-size: 1.2em;
+    padding: 2px 5px;
+    background: var(--white-color);
+    color: var(--font-color);
 }
